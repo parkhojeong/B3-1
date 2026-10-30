@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/></marker>
+    <marker id="a-ssh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b8590b"/></marker>
+    <marker id="a-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5f6b7a"/></marker>
+  </defs>
+  <rect width="1400" height="960" fill="#ffffff"/>
+
+  <text x="40" y="48" font-size="26" font-weight="700" fill="#1b1f24">B3-1 아키텍처 · AWS 서울 리전 (ap-northeast-2)</text>
+
+  <!-- Internet zone -->
+  <rect x="30" y="130" width="290" height="640" rx="14" fill="#f4f6f8" stroke="#c3cad3"/>
+  <text x="50" y="162" font-size="18" font-weight="700" fill="#3b4652">Internet</text>
+
+  <rect x="50" y="200" width="250" height="100" rx="10" fill="#ffffff" stroke="#1f4e79" stroke-width="2"/>
+  <text x="175" y="240" font-size="18" font-weight="700" fill="#1f4e79" text-anchor="middle">사용자 (누구나)</text>
+  <text x="175" y="268" font-size="15" fill="#3b4652" text-anchor="middle">브라우저 · curl</text>
+
+  <rect x="50" y="400" width="250" height="100" rx="10" fill="#ffffff" stroke="#b8590b" stroke-width="2"/>
+  <text x="175" y="440" font-size="18" font-weight="700" fill="#b8590b" text-anchor="middle">관리자 PC (내 IP)</text>
+  <text x="175" y="468" font-size="15" fill="#3b4652" text-anchor="middle">SSH 클라이언트</text>
+
+  <rect x="50" y="600" width="250" height="100" rx="10" fill="#ffffff" stroke="#5f6b7a" stroke-width="2"/>
+  <text x="175" y="640" font-size="18" font-weight="700" fill="#5f6b7a" text-anchor="middle">외부 서비스</text>
+  <text x="175" y="668" font-size="15" fill="#3b4652" text-anchor="middle">dnf 저장소 · example.com</text>
+
+  <!-- VPC -->
+  <rect x="480" y="90" width="890" height="740" rx="14" fill="#f3faf2" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="600" y="122" font-size="19" font-weight="700" fill="#2e7d32">VPC  10.0.0.0/16</text>
+
+  <!-- Route table -->
+  <rect x="620" y="140" width="380" height="96" rx="10" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="640" y="168" font-size="16" font-weight="700" fill="#2e7d32">Public Route Table</text>
+  <text x="640" y="194" font-size="14.5" fill="#3b4652" font-family="Menlo, monospace">10.0.0.0/16 → local</text>
+  <text x="640" y="218" font-size="14.5" fill="#3b4652" font-family="Menlo, monospace">0.0.0.0/0   → Internet Gateway</text>
+  <line x1="810" y1="236" x2="810" y2="290" stroke="#2e7d32" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="820" y="268" font-size="13" fill="#2e7d32">서브넷 연결</text>
+
+  <!-- Public subnet -->
+  <rect x="620" y="290" width="720" height="510" rx="12" fill="#eef5fc" stroke="#147eba" stroke-width="2"/>
+  <text x="640" y="320" font-size="17" font-weight="700" fill="#147eba">Public Subnet  10.0.1.0/24</text>
+  <text x="640" y="344" font-size="14" fill="#3b4652">ap-northeast-2a · 퍼블릭 IP 자동 할당</text>
+
+  <!-- Security group -->
+  <rect x="760" y="370" width="540" height="400" rx="12" fill="none" stroke="#dd344c" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="780" y="400" font-size="16" font-weight="700" fill="#dd344c">Security Group  b3-1-web-sg</text>
+  <text x="780" y="426" font-size="14" fill="#3b4652">인바운드  TCP 80 ← 0.0.0.0/0</text>
+  <text x="780" y="448" font-size="14" fill="#3b4652">인바운드  TCP 22 ← 내 IP/32</text>
+  <text x="780" y="470" font-size="14" fill="#3b4652">아웃바운드  전체 → 0.0.0.0/0</text>
+
+  <!-- EC2 -->
+  <rect x="860" y="510" width="340" height="200" rx="12" fill="#fff6ec" stroke="#ed7100" stroke-width="2.5"/>
+  <text x="1030" y="546" font-size="19" font-weight="700" fill="#b8590b" text-anchor="middle">EC2  b3-1-web</text>
+  <text x="1030" y="576" font-size="14.5" fill="#3b4652" text-anchor="middle">t3.micro · Amazon Linux 2023</text>
+  <text x="1030" y="602" font-size="14.5" fill="#3b4652" text-anchor="middle">Nginx :80  ·  GET /health → 200 OK</text>
+  <text x="1030" y="628" font-size="14.5" fill="#3b4652" text-anchor="middle">프라이빗 IP 10.0.1.x</text>
+  <text x="1030" y="654" font-size="14.5" fill="#3b4652" text-anchor="middle">퍼블릭 IP x.x.x.x (자동 할당)</text>
+  <text x="1030" y="684" font-size="13.5" fill="#5f6b7a" text-anchor="middle">EBS gp3 8GiB (종료 시 삭제)</text>
+
+  <!-- IGW -->
+  <rect x="400" y="400" width="160" height="110" rx="12" fill="#f5efff" stroke="#8c4fff" stroke-width="2.5"/>
+  <text x="480" y="446" font-size="17" font-weight="700" fill="#6b33d6" text-anchor="middle">Internet</text>
+  <text x="480" y="468" font-size="17" font-weight="700" fill="#6b33d6" text-anchor="middle">Gateway</text>
+  <text x="480" y="492" font-size="13" fill="#3b4652" text-anchor="middle">퍼블릭 ↔ 프라이빗 IP 변환</text>
+
+  <!-- Inbound HTTP -->
+  <path d="M300 250 L350 250 L350 425 L396 425" fill="none" stroke="#1f4e79" stroke-width="2.5" marker-end="url(#a-in)"/>
+  <text x="358" y="320" font-size="14" font-weight="700" fill="#1f4e79">HTTP :80</text>
+  <!-- Inbound SSH -->
+  <path d="M300 455 L396 455" fill="none" stroke="#b8590b" stroke-width="2.5" marker-end="url(#a-ssh)"/>
+  <text x="308" y="446" font-size="13" font-weight="700" fill="#b8590b">SSH :22</text>
+  <!-- IGW -> EC2 -->
+  <path d="M560 440 L700 440 L700 560 L856 560" fill="none" stroke="#1f4e79" stroke-width="2.5" marker-end="url(#a-in)"/>
+  <path d="M560 470 L680 470 L680 600 L856 600" fill="none" stroke="#b8590b" stroke-width="2.5" marker-end="url(#a-ssh)"/>
+  <text x="772" y="552" font-size="13.5" font-weight="700" fill="#1f4e79">HTTP 80</text>
+  <text x="772" y="592" font-size="13.5" font-weight="700" fill="#b8590b">SSH 22</text>
+
+  <!-- Outbound: EC2 -> route table -> IGW -> internet -->
+  <path d="M1250 610 L1320 610 L1320 188 L1004 188" fill="none" stroke="#5f6b7a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a-out)"/>
+  <path d="M1200 610 L1250 610" fill="none" stroke="#5f6b7a" stroke-width="2" stroke-dasharray="7 5"/>
+  <path d="M620 188 L520 188 L520 396" fill="none" stroke="#5f6b7a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a-out)"/>
+  <path d="M440 510 L440 650 L304 650" fill="none" stroke="#5f6b7a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#a-out)"/>
+  <text x="1080" y="256" font-size="13.5" fill="#5f6b7a">응답·아웃바운드</text>
+  <text x="1080" y="275" font-size="13.5" fill="#5f6b7a">(dnf, curl)</text>
+
+  <!-- Legend / caption -->
+  <g font-size="14.5" fill="#3b4652">
+    <line x1="40" y1="872" x2="80" y2="872" stroke="#1f4e79" stroke-width="2.5"/><text x="90" y="877">HTTP 요청 (누구나)</text>
+    <line x1="270" y1="872" x2="310" y2="872" stroke="#b8590b" stroke-width="2.5"/><text x="320" y="877">SSH 관리 접속 (내 IP만)</text>
+    <line x1="530" y1="872" x2="570" y2="872" stroke="#5f6b7a" stroke-width="2" stroke-dasharray="7 5"/><text x="580" y="877">응답·아웃바운드 (0.0.0.0/0 → IGW)</text>
+    <line x1="880" y1="872" x2="920" y2="872" stroke="#dd344c" stroke-width="2" stroke-dasharray="8 6"/><text x="930" y="877">Security Group 경계</text>
+    <text x="40" y="914">요청 흐름: 인터넷 → IGW(퍼블릭 IP를 프라이빗 IP로 변환) → Public Subnet → Security Group(80, 22만 허용) → EC2 Nginx</text>
+    <text x="40" y="940">응답과 아웃바운드는 서브넷 Route Table의 0.0.0.0/0 → IGW 경로로 인터넷에 나간다.</text>
+  </g>
+</svg>
